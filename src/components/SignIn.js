@@ -45,7 +45,8 @@ export default function SignIn({ setName }) {
 	const [string, setString] = useState("");
 
 	useEffect(() => {
-		string === "" ? setDisabled(true) : setDisabled(false);
+		const disabled = string === "";
+		setDisabled(disabled);
 	}, [string]);
 
 	return (
@@ -71,12 +72,13 @@ export default function SignIn({ setName }) {
 					/>
 
 					<Button
-						type="submit"
+						type="button"
 						fullWidth
 						variant="contained"
 						color="primary"
 						className={classes.submit}
 						disabled={disabled}
+						onClick={() => setName(string)}
 					>
 						はじめる
 					</Button>
